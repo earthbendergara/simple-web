@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-website
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-website
+  template:
+    metadata:
+      labels:
+        app: my-website
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: web-content
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: web-content
+        configMap:
+          name: my-website-html
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-website
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: my-website
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-website-html
+data:
+  index.html: |
+    <html>
+    <body>
+    <h1>It Works</h1>
+    </body>
+    </html>
