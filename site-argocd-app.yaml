@@ -2,11 +2,18 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: my-website
+  namespace: openshift-gitops
 spec:
   source:
-    repoURL: https://github.com/username/my-repo.git
-    path: my-website  # Path ke manifest aplikasi
+    directory:
+      recurse: false
+    repoURL: https://github.com/earthbendergara/simple-web
+    path: site  # Path ke manifest aplikasi
     targetRevision: main
   destination:
-    server: https://kubernetes.default.svc
-    namespace: my-website-ns
+    namespace: demo
+    name: dev-cluster
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
