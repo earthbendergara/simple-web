@@ -13,7 +13,7 @@ spec:
   project: default
   destination:
     namespace: demo
-    name: dev-cluster
+    name: openshift-prod
   syncPolicy:
     automated:
       prune: true
