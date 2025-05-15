@@ -10,6 +10,7 @@ spec:
     repoURL: https://github.com/earthbendergara/simple-web
     path: site  # Path ke manifest aplikasi
     targetRevision: main
+  project: default
   destination:
     namespace: demo
     name: dev-cluster
