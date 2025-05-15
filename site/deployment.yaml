@@ -35,16 +35,3 @@ spec:
   ports:
   - port: 80
     targetPort: 8080  # arahkan ke port 8080 container
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: my-website-html
-data:
-  index.html: |
-    <html>
-    <body>
-    <h1>It Works</h1>
-    <h2>berhasil terganti</h2>
-    </body>
-    </html>
