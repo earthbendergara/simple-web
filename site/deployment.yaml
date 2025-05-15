@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:alpine
+        image: nginxinc/nginx-unprivileged:alpine
         ports:
-        - containerPort: 80
+        - containerPort: 8080  # nginx-unprivileged listen di port 8080
         volumeMounts:
         - name: web-content
           mountPath: /usr/share/nginx/html
@@ -30,11 +30,11 @@ kind: Service
 metadata:
   name: my-website
 spec:
-  ports:
-  - port: 80
-    targetPort: 80
   selector:
     app: my-website
+  ports:
+  - port: 80
+    targetPort: 8080  # arahkan ke port 8080 container
 ---
 apiVersion: v1
 kind: ConfigMap
