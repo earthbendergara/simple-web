@@ -196,6 +196,6 @@ IP address sesuaikan dengan IP Route Openshift
 ```
 
 ## Maintanence website
-Setiap ada perubahan pada repositori websitemu, akan otomatis dilakukan synchronize oleh ArgoCD tiap 3 Menit
+Setiap ada perubahan pada repositori websitemu di Github, akan otomatis dilakukan synchronize oleh ArgoCD tiap 3 Menit
 
 
